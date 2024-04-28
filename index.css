@@ -1,0 +1,33 @@
+.app-logo {
+  width: 200px;
+  height: 100px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+.ul-elements {
+  display: flex;
+}
+
+.ul-elements > li {
+  margin: 20px;
+  font-size: 20px;
+  list-style-type: none;
+}
+
+.res-card {
+  width: 100px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.restarntas {
+  display: flex;
+  flex-wrap: wrap;
+}
