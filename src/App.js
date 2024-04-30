@@ -10,7 +10,7 @@ const App = () => {
       <div>
         <Header />
         <Search />
-        <Restaurant />
+        <Restaurant name="A" />
       </div>
     </div>
   );

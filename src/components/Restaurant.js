@@ -1,5 +1,6 @@
 const Restaurant = (props) => {
-  const { name } = props.restarant;
+  const { name } = props;
+
   return (
     <div className="res-card">
       <h1>{name}</h1>
