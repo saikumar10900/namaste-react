@@ -18,16 +18,19 @@
 }
 
 .res-card {
-  width: 100px;
-  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
   margin: 5px;
+  padding: 10px;
 }
 
 .restarntas {
+  display: flex;
+  flex-wrap: wrap;
+}
+.res-cards {
   display: flex;
   flex-wrap: wrap;
 }

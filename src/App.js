@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Restaurant from "./components/Restaurant";
+import Body from "./components/Body";
 
 const App = () => {
   return (
@@ -10,7 +11,8 @@ const App = () => {
       <div>
         <Header />
         <Search />
-        <Restaurant name="A" />
+        {/* <Restaurant name="A" /> */}
+        <Body />
       </div>
     </div>
   );
