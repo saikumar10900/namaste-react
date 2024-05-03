@@ -4,6 +4,7 @@ import Restaurant from "./Restaurant";
 
 const Body = () => {
   const [res, setRes] = useState([]);
+  const [filterRes, setFilterRes] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
@@ -16,13 +17,27 @@ const Body = () => {
     setRes(
       json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilterRes(
+      json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
+
+  const filterTop5 = () => {
+    setFilterRes(filterRes.filter((eachRes) => eachRes.info.avgRating > 4));
+  };
+
   return (
-    <div className="res-cards">
-      {res.map((eachRes) => (
-        <Restaurant name={eachRes.info.name} />
-      ))}
-    </div>
+    <>
+      <button onClick={filterTop5}>Top 5 restaurants</button>
+      <div className="res-cards">
+        {filterRes.map((eachRes) => (
+          <Restaurant
+            name={eachRes.info.name}
+            rating={eachRes.info.avgRating}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 export default Body;
