@@ -26,7 +26,7 @@ const Body = () => {
     setFilterRes(filterRes.filter((eachRes) => eachRes.info.avgRating > 4));
   };
 
-  if (res.length === 0) {
+  if (res?.length === 0) {
     return <h1>Loading........</h1>;
   }
 

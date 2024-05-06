@@ -35,3 +35,6 @@
   display: flex;
   flex-wrap: wrap;
 }
+.user {
+  border: 1px solid black;
+}
