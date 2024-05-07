@@ -15,10 +15,10 @@ const Body = () => {
     const json = await data.json();
 
     setRes(
-      json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
+      json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilterRes(
-      json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
+      json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -34,7 +34,7 @@ const Body = () => {
     <>
       <button onClick={filterTop5}>Top 5 restaurants</button>
       <div className="res-cards">
-        {filterRes.map((eachRes) => {
+        {filterRes?.map((eachRes) => {
           const resId = eachRes.info.id;
           return (
             <Link key={resId} to={"/restaurants/" + resId}>
