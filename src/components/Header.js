@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils.js/useOnlineStatus";
 
 const Header = () => {
   const [loginState, setLoginState] = useState(false);
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="header-container">
       <div className="logo-container">
@@ -14,6 +16,7 @@ const Header = () => {
       </div>
       <div className="header-children">
         <ul className="ul-elements">
+          <li>Online Status: {onlineStatus ? "ONLINE" : "OFFLINE"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -22,6 +25,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li>
             {

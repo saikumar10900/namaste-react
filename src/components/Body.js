@@ -3,10 +3,12 @@ import { useEffect } from "react";
 import Restaurant from "./Restaurant";
 import { Link } from "react-router-dom";
 import { SWIGGY_MAIN_API } from "../utils.js/APIS";
+import useOnlineStatus from "../utils.js/useOnlineStatus";
 
 const Body = () => {
   const [res, setRes] = useState([]);
   const [filterRes, setFilterRes] = useState([]);
+  const onlineStatus = useOnlineStatus();
   useEffect(() => {
     fetchData();
   }, []);
@@ -15,16 +17,21 @@ const Body = () => {
     const json = await data.json();
 
     setRes(
-      json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants
+      json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilterRes(
-      json.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants
+      json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
   const filterTop5 = () => {
     setFilterRes(filterRes.filter((eachRes) => eachRes.info.avgRating > 4));
   };
+
+  if (!onlineStatus)
+    return (
+      <h1>Looks like you're offline, please check your internet connection</h1>
+    );
 
   if (res?.length === 0) {
     return <h1>Loading........</h1>;
