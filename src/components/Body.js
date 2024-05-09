@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import Restaurant from "./Restaurant";
+import RestaurantCard, { withBadgeRestaurant } from "./Restaurant";
 import { Link } from "react-router-dom";
 import { SWIGGY_MAIN_API } from "../utils.js/APIS";
 import useOnlineStatus from "../utils.js/useOnlineStatus";
@@ -8,7 +8,10 @@ import useOnlineStatus from "../utils.js/useOnlineStatus";
 const Body = () => {
   const [res, setRes] = useState([]);
   const [filterRes, setFilterRes] = useState([]);
+
   const onlineStatus = useOnlineStatus();
+
+  const PromotedCard = withBadgeRestaurant(RestaurantCard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -20,6 +23,10 @@ const Body = () => {
       json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilterRes(
+      json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    console.log(
+      "res: ",
       json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
@@ -39,16 +46,28 @@ const Body = () => {
 
   return (
     <>
-      <button onClick={filterTop5}>Top 5 restaurants</button>
-      <div className="res-cards">
+      <button
+        className="border border-solid border-green-400 rounded-xl p-4"
+        onClick={filterTop5}
+      >
+        Top 5 restaurants
+      </button>
+      <div className="flex flex-wrap">
         {filterRes?.map((eachRes) => {
           const resId = eachRes.info.id;
           return (
             <Link key={resId} to={"/restaurants/" + resId}>
-              <Restaurant
-                name={eachRes.info.name}
-                rating={eachRes.info.avgRating}
-              />
+              {Object.values(eachRes.info.badges) ? (
+                <PromotedCard
+                  name={eachRes.info.name}
+                  rating={eachRes.info.avgRating}
+                />
+              ) : (
+                <RestaurantCard
+                  name={eachRes.info.name}
+                  rating={eachRes.info.avgRating}
+                />
+              )}
             </Link>
           );
         })}

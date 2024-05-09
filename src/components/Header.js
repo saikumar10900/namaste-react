@@ -6,32 +6,36 @@ const Header = () => {
   const [loginState, setLoginState] = useState(false);
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header-container">
+    <div className="flex justify-between bg-pink-200">
       <div className="logo-container">
         <img
           src="https://1000logos.net/wp-content/uploads/2021/05/Swiggy-logo.png"
           alt="logo"
-          className="app-logo"
+          className="w-[200px] m-4 p-4"
         />
       </div>
-      <div className="header-children">
-        <ul className="ul-elements">
-          <li>Online Status: {onlineStatus ? "ONLINE" : "OFFLINE"}</li>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex">
+          <li className="px-4">
+            Online Status: {onlineStatus ? "ONLINE" : "OFFLINE"}
+          </li>
+          <li className="px-4">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link className="px-4" to="/contact">
+              Contact
+            </Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>
+          <li className="px-4">
             {
-              <button onClick={() => setLoginState(!loginState)}>
+              <button onClick={() => setLoginState(!loginState)} className="">
                 {loginState ? "Logout" : "Login"}
               </button>
             }
