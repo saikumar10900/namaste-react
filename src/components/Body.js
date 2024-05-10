@@ -25,10 +25,6 @@ const Body = () => {
     setFilterRes(
       json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    console.log(
-      "res: ",
-      json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
   };
 
   const filterTop5 = () => {
