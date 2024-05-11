@@ -6,7 +6,6 @@ import { SWIGGY_MAIN_API } from "../utils.js/APIS";
 import useOnlineStatus from "../utils.js/useOnlineStatus";
 
 const Body = () => {
-  const [res, setRes] = useState([]);
   const [filterRes, setFilterRes] = useState([]);
 
   const onlineStatus = useOnlineStatus();
@@ -19,9 +18,6 @@ const Body = () => {
     const data = await fetch(SWIGGY_MAIN_API);
     const json = await data.json();
 
-    setRes(
-      json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
     setFilterRes(
       json.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -36,7 +32,7 @@ const Body = () => {
       <h1>Looks like you're offline, please check your internet connection</h1>
     );
 
-  if (res?.length === 0) {
+  if (filterRes?.length === 0) {
     return <h1>Loading........</h1>;
   }
 
