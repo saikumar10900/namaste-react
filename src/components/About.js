@@ -10,7 +10,6 @@ class About extends React.Component {
     const data = await fetch("https://api.github.com/users/saikumar10900");
 
     const json = await data.json();
-    console.log("json: ", json);
     this.setState({ profileInfo: json });
   }
   componentDidUpdate() {
