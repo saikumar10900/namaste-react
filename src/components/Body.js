@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import RestaurantCard, { withBadgeRestaurant } from "./Restaurant";
 import { Link } from "react-router-dom";
 import { SWIGGY_MAIN_API } from "../utils.js/APIS";
 import useOnlineStatus from "../utils.js/useOnlineStatus";
+import { UserContext } from "../utils.js/UserContext";
 
 const Body = () => {
   const [filterRes, setFilterRes] = useState([]);
 
   const onlineStatus = useOnlineStatus();
+  const { loggedinUser, setUsername } = useContext(UserContext);
 
   const PromotedCard = withBadgeRestaurant(RestaurantCard);
   useEffect(() => {
@@ -44,6 +46,15 @@ const Body = () => {
       >
         Top 5 restaurants
       </button>
+      <div className="p-4 m-4">
+        <label>Username: </label>
+        <input
+          type="text"
+          className="border border-black"
+          value={loggedinUser}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
       <div className="flex flex-wrap">
         {filterRes?.map((eachRes) => {
           const resId = eachRes.info.id;
