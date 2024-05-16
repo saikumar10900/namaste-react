@@ -13,6 +13,14 @@ const ItemList = ({ items }) => {
               <div>
                 <span className="font-bold py-4">{name}</span>
                 <span> - ₹ {price ? price / 100 : defaultPrice / 100}</span>
+                <span>
+                  <button
+                    type="button"
+                    className="relative m-2 py-1 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                  >
+                    Add
+                  </button>
+                </span>
               </div>
               <p className="text-xs">{description}</p>
             </div>

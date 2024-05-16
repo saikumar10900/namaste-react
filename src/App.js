@@ -7,6 +7,7 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/ResturantMenu";
 import { UserContext } from "./utils.js/UserContext";
+import Cart from "./components/Cart";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -60,6 +61,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

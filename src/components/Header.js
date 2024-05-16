@@ -36,6 +36,9 @@ const Header = () => {
             <Link to="/grocery">Grocery</Link>
           </li>
           <li className="px-4">
+            <Link to="/cart">Cart</Link>
+          </li>
+          <li className="px-4">
             {
               <button onClick={() => setLoginState(!loginState)} className="">
                 {loginState ? "Logout" : "Login"}
