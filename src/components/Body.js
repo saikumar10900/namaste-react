@@ -57,20 +57,14 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap">
         {filterRes?.map((eachRes) => {
-          const resId = eachRes.info.id;
+          const { id, name, avgRating, cloudinaryImageId } = eachRes.info;
           return (
-            <Link key={resId} to={"/restaurants/" + resId}>
-              {Object.values(eachRes.info.badges) ? (
-                <PromotedCard
-                  name={eachRes.info.name}
-                  rating={eachRes.info.avgRating}
-                />
-              ) : (
-                <RestaurantCard
-                  name={eachRes.info.name}
-                  rating={eachRes.info.avgRating}
-                />
-              )}
+            <Link key={id} to={"/restaurants/" + id}>
+              <RestaurantCard
+                name={name}
+                rating={avgRating}
+                cloudinaryImgId={cloudinaryImageId}
+              />
             </Link>
           );
         })}
