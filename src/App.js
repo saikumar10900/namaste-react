@@ -12,7 +12,7 @@ import Cart from "./components/Cart";
 const App = () => {
   const [username, setUsername] = useState("");
   useEffect(() => {
-    setUsername("SK");
+    setUsername("Saikumar");
   }, []);
   return (
     <UserContext.Provider value={{ loggedinUser: username, setUsername }}>
