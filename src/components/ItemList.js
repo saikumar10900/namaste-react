@@ -1,6 +1,12 @@
+import { useDispatch } from "react-redux";
 import { CLOUDINARY_URL } from "../utils.js/APIS";
+import { addItem } from "../utils.js/cartSlice";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+  const handleAddItemToCart = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div>
       <div>
@@ -20,6 +26,7 @@ const ItemList = ({ items }) => {
                     <button
                       type="button"
                       className="relative m-2 py-1 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                      onClick={() => handleAddItemToCart(eachItem)}
                     >
                       Add
                     </button>

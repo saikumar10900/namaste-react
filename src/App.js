@@ -8,6 +8,8 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/ResturantMenu";
 import { UserContext } from "./utils.js/UserContext";
 import Cart from "./components/Cart";
+import { Provider } from "react-redux";
+import appStore from "./utils.js/appStore";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -15,14 +17,16 @@ const App = () => {
     setUsername("Saikumar");
   }, []);
   return (
-    <UserContext.Provider value={{ loggedinUser: username, setUsername }}>
-      <div className="app-container">
-        <div>
-          <Header />
-          <Outlet />
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedinUser: username, setUsername }}>
+        <div className="app-container">
+          <div>
+            <Header />
+            <Outlet />
+          </div>
         </div>
-      </div>
-    </UserContext.Provider>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
