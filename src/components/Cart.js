@@ -4,6 +4,7 @@ import { clearCart } from "../utils.js/cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
+  console.log("cartItems", cartItems);
   const dispatch = useDispatch();
   const clearCartItems = () => {
     dispatch(clearCart());
@@ -14,6 +15,7 @@ const Cart = () => {
       <button
         className="p-2 m-2 bg-black text-white rounded-xl"
         onClick={clearCartItems}
+        disabled={cartItems.length === 0}
       >
         Clear
       </button>
