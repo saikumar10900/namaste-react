@@ -40,20 +40,24 @@ const Body = () => {
 
   return (
     <>
-      <button
-        className="border border-solid border-green-400 rounded-xl p-4"
-        onClick={filterTop5}
-      >
-        Top 5 restaurants
-      </button>
-      <div className="p-4 m-4">
-        <label>Username: </label>
-        <input
-          type="text"
-          className="border border-black"
-          value={loggedinUser}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+      <div className="p-4 m-4 flex flex-row">
+        <div className="w-2/12">
+          <button
+            className="border border-solid border-green-400 rounded-xl p-4"
+            onClick={filterTop5}
+          >
+            Top 5 restaurants
+          </button>
+        </div>
+        <div className="w-4/12 p-4">
+          <label>Username: </label>
+          <input
+            type="text"
+            className="border border-black"
+            value={loggedinUser}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap">
         {filterRes?.map((eachRes) => {
