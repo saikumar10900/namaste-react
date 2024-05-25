@@ -7,3 +7,9 @@ test("render Contact component", () => {
   const heading = screen.getByRole("heading");
   expect(heading).toBeInTheDocument();
 });
+
+test("render Submit button", () => {
+  render(<Contact />);
+  const heading = screen.getByRole("button", { name: "Submit" });
+  expect(heading).toBeInTheDocument();
+});
