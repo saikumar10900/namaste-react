@@ -12,7 +12,7 @@ const RestaurantCard = (props) => {
       <div>
         <h1 className="text-lg-600">{name}</h1>
         <p>{rating}</p>
-        <h3 className="font-bold">User: {loggedinUser}</h3>
+        <h3 className="font-bold">Active user: {loggedinUser}</h3>
       </div>
       <div>
         <img src={CLOUDINARY_URL + cloudinaryImgId} className="w-[100px]" />
