@@ -42,6 +42,9 @@ const Header = () => {
           <li className="px-4 font-bold">
             <Link to="/cart">Cart - ({cartItems.length} items)</Link>
           </li>
+          <li className="px-4 font-bold">
+            <Link to="/carousel">Carousel</Link>
+          </li>
           <li className="px-4">
             {
               <button onClick={() => setLoginState(!loginState)} className="">

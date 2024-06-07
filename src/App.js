@@ -10,6 +10,7 @@ import { UserContext } from "./utils.js/UserContext";
 import Cart from "./components/Cart";
 import { Provider } from "react-redux";
 import appStore from "./utils.js/appStore";
+import Carousel from "./components/Carousel";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -69,6 +70,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/carousel",
+        element: <Carousel />,
       },
     ],
     errorElement: <Error />,
