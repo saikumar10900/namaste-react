@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils.js/useOnlineStatus";
 import { UserContext } from "../utils.js/UserContext";
@@ -10,6 +10,23 @@ const Header = () => {
   const { loggedinUser } = useContext(UserContext);
 
   const cartItems = useSelector((store) => store.cart.items);
+
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timerId); // Clean up the interval on component unmount
+  }, []);
+
+  const formatTime = (date) => {
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    return `${hours}:${minutes}:${seconds}`;
+  };
 
   return (
     <div className="flex justify-between bg-pink-200">
@@ -53,6 +70,7 @@ const Header = () => {
             }
           </li>
           <li className="px-4 font-mono">USER: {loggedinUser}</li>
+          <li className="font-bold">{formatTime(time)}</li>
         </ul>
       </div>
     </div>
