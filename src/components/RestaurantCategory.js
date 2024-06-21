@@ -2,7 +2,6 @@ import { useState } from "react";
 import ItemList from "./ItemList";
 
 const RestaurantCategory = ({ data, showItemList, setItemListIndex }) => {
-  console.log("data: ", data);
   const { title, itemCards } = data;
 
   const [isOpen, setIsOpen] = useState(false);
