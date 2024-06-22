@@ -6,7 +6,6 @@ class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = { profileInfo: {} };
-    console.log("parent constructor");
   }
   async componentDidMount() {
     const data = await fetch("https://api.github.com/users/saikumar10900");
@@ -14,14 +13,9 @@ class About extends React.Component {
     const json = await data.json();
     this.setState({ profileInfo: json });
   }
-  componentDidUpdate() {
-    console.log("updated");
-  }
-  componentWillUnmount() {
-    console.log("unmounted");
-  }
+  componentDidUpdate() {}
+  componentWillUnmount() {}
   render() {
-    console.log("parent render");
     return (
       <div>
         <h1>About</h1>
