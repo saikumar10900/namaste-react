@@ -9,12 +9,15 @@ class About extends React.Component {
   }
   async componentDidMount() {
     const data = await fetch("https://api.github.com/users/saikumar10900");
-
     const json = await data.json();
     this.setState({ profileInfo: json });
   }
-  componentDidUpdate() {}
-  componentWillUnmount() {}
+  componentDidUpdate() {
+    console.log("componentDidUpdate called");
+  }
+  componentWillUnmount() {
+    console.log("componentWillUnmount called");
+  }
   render() {
     return (
       <div>
