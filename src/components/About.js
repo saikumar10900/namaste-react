@@ -19,12 +19,13 @@ class About extends React.Component {
     console.log("componentWillUnmount called");
   }
   render() {
+    const {name, avatar_url} = this.state.profileInfo;
     return (
       <div>
         <h1>About</h1>
         <User
-          name={this.state.profileInfo.name}
-          image={this.state.profileInfo.avatar_url}
+          name={name}
+          image={avatar_url}
         />
         <UserClass />
         <UserContext.Consumer>
