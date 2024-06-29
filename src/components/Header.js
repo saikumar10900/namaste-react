@@ -2,16 +2,23 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils.js/useOnlineStatus";
 import { UserContext } from "../utils.js/UserContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleLoginState } from "../utils.js/loginUserSlice";
 
 const Header = () => {
-  const [loginState, setLoginState] = useState(false);
+  // const [loginState, setLoginState] = useState(false);
+  const loginState = useSelector((store) => store.user.loginState);
+  const dispatchAction = useDispatch();
   const onlineStatus = useOnlineStatus();
   const { loggedinUser } = useContext(UserContext);
 
   const cartItems = useSelector((store) => store.cart.items);
 
   const [time, setTime] = useState(new Date());
+
+  const handleLoginState = () => {
+    dispatchAction(toggleLoginState());
+  };
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -64,7 +71,7 @@ const Header = () => {
           </li>
           <li className="px-4">
             {
-              <button onClick={() => setLoginState(!loginState)} className="">
+              <button onClick={handleLoginState} className="">
                 {loginState ? "Logout" : "Login"}
               </button>
             }
